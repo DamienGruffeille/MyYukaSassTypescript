@@ -1,0 +1,262 @@
+$background-color-main: rgb(221, 217, 217);
+$background-color-element: #61745b;
+$cursor: pointer;
+$border-radius: 5px;
+
+// TODO : voir pour mettre align et justify en center par défaut
+@mixin flex-align($sens, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $sens;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin img-carroussel {
+  max-width: 100%;
+  align-self: center;
+  justify-self: center;
+}
+
+@mixin hidden-element {
+  display: none;
+  overflow: hidden;
+}
+
+%color-selected-item {
+  background-color: #42503e;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  font-size: medium;
+  background-color: $background-color-main;
+}
+
+header {
+  background-color: $background-color-main;
+  color: #61745b;
+  text-align: center;
+}
+
+article {
+  @include flex-align(column);
+}
+
+.fieldset {
+  width: 80%;
+  @include flex-align(column);
+  background-color: $background-color-main;
+  border: 1px solid rgb(94, 92, 92);
+  border-radius: $border-radius;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+
+  &__search-bar {
+    box-shadow: inset 0.3px 0.3px 0.3px rgba(0, 0, 0, 0.2);
+  }
+
+  &__error {
+    color: red;
+    @include hidden-element();
+  }
+
+  &__button {
+    cursor: $cursor;
+
+    &--options {
+      margin-top: 5px;
+      border: none;
+      background-color: $background-color-main;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__choixOptions {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "opt1 opt2"
+      "opt3 opt4"
+      "opt5 opt6";
+    white-space: nowrap;
+    margin-top: 5px;
+    @include hidden-element();
+  }
+}
+
+h3 {
+  @include hidden-element();
+}
+
+.label {
+  font-weight: bold;
+}
+
+.resultat {
+  @include flex-align(column);
+  // @include hidden-element();
+  width: 100%;
+}
+
+.infos-produit {
+  @include flex-align(row);
+  background-color: $background-color-element;
+  border: 1px solid rgb(94, 92, 92);
+  margin-bottom: 15px;
+  border-radius: $border-radius;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  width: 80%;
+
+  &__nom-code {
+    @include flex-align(column, space-around);
+    margin: 15px;
+  }
+}
+
+.carousel-collapsible {
+  @include flex-align(row);
+  background-color: $background-color-element;
+  border: 1px solid rgb(94, 92, 92);
+  margin-bottom: 15px;
+  border-radius: $border-radius;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  width: 80%;
+}
+
+.carousel__container {
+  margin: 0 auto;
+  padding: 10px;
+
+  &__slider-img {
+    max-width: 100%;
+    display: none;
+
+    &--active {
+      display: block;
+      animation: fade 0.8s;
+      width: 100%;
+      min-height: 150px;
+      padding: 5px;
+      border-radius: 3px;
+      height: auto;
+      background: #dad8d8;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: auto;
+    border: 1px solid #000;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    @include flex-align(row, space-around, center);
+    color: rgb(221, 217, 217);
+    cursor: pointer;
+  }
+}
+
+.collapsible {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+
+  &__button {
+    font-size: medium;
+    background-color: #61745b;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    &--active {
+      @extend %color-selected-item;
+
+      &:after {
+        content: "\2212";
+      }
+    }
+
+    &:hover {
+      @extend %color-selected-item;
+    }
+
+    &:after {
+      content: "\002B";
+      color: rgb(221, 217, 217);
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+    }
+  }
+  &__content {
+    @include hidden-element();
+  }
+}
+
+.listeNutriments {
+  width: auto;
+
+  &__high {
+    border: 1px solid red;
+    background-color: red;
+  }
+
+  &__moderate {
+    border: 1px solid yellow;
+    background-color: yellow;
+  }
+
+  &__low {
+    border: 1px solid green;
+    background-color: green;
+  }
+
+  &__undefined {
+    border: 1px solid white;
+    background-color: white;
+  }
+}
+
+.verdict {
+  flex-direction: column;
+  @include hidden-element();
+
+  &__img {
+    width: 20%;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
+// Pied de page
+ul {
+  @include flex-align(row);
+  & > li {
+    font-size: smaller;
+    list-style: none;
+    padding: 5px 5px 5px 5px;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .carousel-collapsible {
+    @include flex-align(column, space-between, center);
+  }
+
+  .container {
+    margin: 15px;
+  }
+}

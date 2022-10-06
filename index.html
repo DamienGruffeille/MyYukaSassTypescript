@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>KakaOuPasKaka - L'appli qui vous dit ce que vous mangez</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <h1>KakaOuPasKaka</h1>
+        </header>
+
+        <article>
+        <!-- Bloc barre de recherche -->
+        <fieldset class="fieldset">
+            <legend>Recherche</legend>
+
+            <div class="barreRecherche">
+                <input
+                type="search"
+                class="fieldset__search-bar"
+                placeholder="Saisissez le code barre"
+            />
+            <button type="button" class="fieldset__button">Rechercher</button>
+            </div>
+
+            <div class="fieldset__error">Code produit inconnu</div>
+
+            <!-- bouton permettant d'afficher ou cacher les options  -->
+            <button type="button" class="fieldset__button--options">Afficher options</button>
+
+            <!-- Options de recherche -->
+            <div class="fieldset__choixOptions">
+                <input
+                    type="checkbox"
+                    name="ingredients"
+                    id="ingredients"
+                    checked
+                />
+                <label for="ingredients">Ingrédients</label>
+            </div>
+            <div>
+                <input
+                type="checkbox"
+                name="tableauNutritionnel"
+                id="cbxTableauNutritionnel"
+                checked
+                />
+                <label for="tableauNutritionnel">Tableau nutritionnel</label>
+            </div>
+            <div>
+                <input type="checkbox" name="allergenes" id="allergenes" checked />
+                <label for="allergenes">Allergènes</label>
+            </div>
+            <div>
+                <input type="checkbox" name="nutriscore" id="nutriscore" checked />
+                <label for="nutriscore">Nutri-score</label>
+            </div>
+            <div>
+                <input type="checkbox" name="nova" id="nova" checked />
+                <label for="nova">Nova-Score</label>
+            </div>
+            <div>
+                <input type="checkbox" name="ecoScore" id="ecoScore" checked />
+                <label for="ecoScore">Eco Score</label>
+            </div>
+        </fieldset>
+
+        <!-- Bloc où sont affichées les infos produit -->
+        <h3 id="titre">Résultat de votre recherche</h3>
+
+        <div class="resultat">
+
+            <!-- Bloc où sont affichées photo, nom et code barre retournés par l'API -->
+            <div class="infos-produit">
+            <img id="imgProduit" src="#" alt="Photo du produit" />
+
+            <div class="infos-produit__nom-code">
+                <div id="nomProduit">Nom du produit</div>
+                <div id="codeBarres">cede EAN13</div>
+            </div>
+            </div>
+
+            <!-- Bloc du caroussel et menu dépliant -->
+            <div class="carousel-collapsible">  
+                <div class="carousel__container">
+                    <div class="slider">
+                        <img 
+                            src="#" 
+                            id="imgNutriScore" 
+                            alt="image Nutri-score" 
+                            class="carousel__container__slider-img--active">
+                        </img>
+                        <img 
+                            src="#" 
+                            id="imgNova" 
+                            alt="image Nova Score" 
+                            class="carousel__container__slider-img">
+                        </img>
+                        <img 
+                            src="#" 
+                            id="imgEcoScore" 
+                            alt="image Eco Score" 
+                            class="carousel__container__slider-img">
+                        </img>
+                    </div>
+
+                    <div class="carousel__container__button">
+                        <div class="btn-nav left">←</div>
+                        <div class="btn-nav right">→</div>
+                    </div>
+                </div>
+                <!-- Bloc où sont affichées les infos ingrédients retournées par l'API -->
+                <div class="collapsible">
+                    <button 
+                        type="button" 
+                        class="collapsible__button"
+                        >Ingrédients
+                    </button>
+                    <div 
+                        id="listeIngredients" 
+                        class="collapsible__content">
+                    </div>
+
+                    <button 
+                        type="button" 
+                        class="collapsible__button"
+                        >Tableau Nutritionnel
+                    </button>
+                    <div 
+                        id="listeNutriments"
+                        class="collapsible__content">
+                            <p id="fat"></p>
+                            <p id="saturatedFat"></p>
+                            <p id="salt"></p>
+                            <p id="sugar"></p>
+                    </div>
+
+                    <button 
+                        type="button" 
+                        class="collapsible__button"
+                        >Allergènes
+                    </button>
+                    <div 
+                        id="listeAllergenes" 
+                        class="collapsible__content">
+                    </div>
+                </div>
+            </div>
+        </div>  
+        
+        <!-- Bouton permettant d'afficher la fenêtre contextuelle du verdict sur le produit  -->
+        <div class="verdict">
+            <button 
+                class="verdict__button"
+                id="btnVerdict">
+                Voir le verdict final
+            </button>
+
+            <img
+                class="verdict__img"
+                src="#"
+                alt="photo du verdict"
+                id="photoVerdict">
+        </div>
+    </article>
+
+    <footer>
+      <ul>
+        <li>Contactez-nous</li>
+        <li>A propos</li>
+        <li>Mentions légales</li>
+      </ul>
+    </footer>
+
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
+
