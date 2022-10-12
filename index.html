@@ -22,56 +22,59 @@
                 type="search"
                 class="fieldset__search-bar"
                 placeholder="Saisissez le code barre"
+                id="codeBarre"
             />
-            <button type="button" class="fieldset__button">Rechercher</button>
+            <button type="button" class="fieldset__button" id="btnSearch">Rechercher</button>
             </div>
 
-            <div class="fieldset__error">Code produit inconnu</div>
+            <div class="fieldset__error" id="error">Code produit inconnu</div>
 
             <!-- bouton permettant d'afficher ou cacher les options  -->
-            <button type="button" class="fieldset__button--options">Afficher options</button>
+            <button type="button" class="fieldset__button--options" id="btnAfficherOptions">Afficher options</button>
 
             <!-- Options de recherche -->
-            <div class="fieldset__choixOptions">
-                <input
-                    type="checkbox"
-                    name="ingredients"
-                    id="ingredients"
-                    checked
-                />
-                <label for="ingredients">Ingrédients</label>
-            </div>
-            <div>
-                <input
-                type="checkbox"
-                name="tableauNutritionnel"
-                id="cbxTableauNutritionnel"
-                checked
-                />
-                <label for="tableauNutritionnel">Tableau nutritionnel</label>
-            </div>
-            <div>
-                <input type="checkbox" name="allergenes" id="allergenes" checked />
-                <label for="allergenes">Allergènes</label>
-            </div>
-            <div>
-                <input type="checkbox" name="nutriscore" id="nutriscore" checked />
-                <label for="nutriscore">Nutri-score</label>
-            </div>
-            <div>
-                <input type="checkbox" name="nova" id="nova" checked />
-                <label for="nova">Nova-Score</label>
-            </div>
-            <div>
-                <input type="checkbox" name="ecoScore" id="ecoScore" checked />
-                <label for="ecoScore">Eco Score</label>
+            <div class="fieldset__choixOptions" id="choixOptions">
+                <div>
+                    <input
+                        type="checkbox"
+                        name="ingredients"
+                        id="ingredients"
+                        checked
+                    />
+                    <label for="ingredients">Ingrédients</label>
+                </div>
+                <div>
+                    <input
+                        type="checkbox"
+                        name="tableauNutritionnel"
+                        id="cbxTableauNutritionnel"
+                        checked
+                    />
+                    <label for="tableauNutritionnel">Tableau nutritionnel</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="allergenes" id="allergenes" checked />
+                    <label for="allergenes">Allergènes</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="nutriscore" id="nutriscore" checked />
+                    <label for="nutriscore">Nutri-score</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="nova" id="nova" checked />
+                    <label for="nova">Nova-Score</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="ecoScore" id="ecoScore" checked />
+                    <label for="ecoScore">Eco Score</label>
+                </div>
             </div>
         </fieldset>
 
         <!-- Bloc où sont affichées les infos produit -->
         <h3 id="titre">Résultat de votre recherche</h3>
 
-        <div class="resultat">
+        <div class="resultat" id="resultat">
 
             <!-- Bloc où sont affichées photo, nom et code barre retournés par l'API -->
             <div class="infos-produit">
@@ -91,7 +94,7 @@
                             src="#" 
                             id="imgNutriScore" 
                             alt="image Nutri-score" 
-                            class="carousel__container__slider-img--active">
+                            class="carousel__container__slider-img active">
                         </img>
                         <img 
                             src="#" 
@@ -132,10 +135,12 @@
                     <div 
                         id="listeNutriments"
                         class="collapsible__content">
-                            <p id="fat"></p>
+                        <div>
+                            <p id="fat"></p> 
                             <p id="saturatedFat"></p>
-                            <p id="salt"></p>
+                            <p id="salt"></p> 
                             <p id="sugar"></p>
+                        </div>
                     </div>
 
                     <button 
@@ -152,7 +157,7 @@
         </div>  
         
         <!-- Bouton permettant d'afficher la fenêtre contextuelle du verdict sur le produit  -->
-        <div class="verdict">
+        <div class="verdict" id="verdict">
             <button 
                 class="verdict__button"
                 id="btnVerdict">

@@ -74,6 +74,7 @@ article {
   }
 
   &__choixOptions {
+    @include hidden-element();
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
@@ -82,7 +83,6 @@ article {
       "opt5 opt6";
     white-space: nowrap;
     margin-top: 5px;
-    @include hidden-element();
   }
 }
 
@@ -96,7 +96,7 @@ h3 {
 
 .resultat {
   @include flex-align(column);
-  // @include hidden-element();
+  @include hidden-element();
   width: 100%;
 }
 
@@ -117,11 +117,9 @@ h3 {
 
 .carousel-collapsible {
   @include flex-align(row);
-  background-color: $background-color-element;
-  border: 1px solid rgb(94, 92, 92);
+  background-color: $background-color-main;
   margin-bottom: 15px;
   border-radius: $border-radius;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   width: 80%;
 }
 
@@ -133,7 +131,7 @@ h3 {
     max-width: 100%;
     display: none;
 
-    &--active {
+    &.active {
       display: block;
       animation: fade 0.8s;
       width: 100%;
@@ -226,7 +224,7 @@ h3 {
 
   &__img {
     width: 20%;
-
+    @include hidden-element();
     position: absolute;
     left: 0;
     right: 0;
